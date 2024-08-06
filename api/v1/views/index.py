@@ -3,7 +3,8 @@
     dou ......c
     """
 
-from api.v1.views import app_view
+from models import storage
+from api.v1.views import app_views
 from flask import Flask, jsonify
 
 app = Flask(__name__)
