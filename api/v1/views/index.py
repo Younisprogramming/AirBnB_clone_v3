@@ -7,11 +7,17 @@ from models import storage
 from api.v1.views import app_views
 from flask import Flask, jsonify
 
-app = Flask(__name__)
+@app_views.route("/status", methods=['GET'], strict_slashes=False)
+def status():
+    """
+    status route
+    :return: response with json
+    """
+    data = {
+        "status": "OK"
+    }
 
-@app.route('/status', methods=['GET'])
-def get_status():
-    return jsonify({'status': 'OK'})
+    resp = jsonify(data)
+    resp.status_code = 200
 
-if __name__ == '__main__':
-    app.run(debug=True)
+    return resp
